@@ -108,7 +108,6 @@ Using this accelerator delivers measurable outcomes:
 - [System Components](#-system-components)
 - [Functional Capabilities](#-functional-capabilities)
 - [Technology Stack Mapping](#-technology-stack-mapping)
-
 - [Authentication Architecture](#-authentication-architecture)
 - [Routing Architecture](#-routing-architecture)
 - [State Management Strategy](#-state-management-strategy)
@@ -409,3 +408,253 @@ The accelerator is built using a carefully selected set of industry-proven front
 | Accessibility         | ARIA, axe-core                                   | Accessibility compliance and validation        |
 
 ---
+
+## 🔐 Authentication Architecture
+
+Authentication Architecture defines how user identity, session management, route protection, and access control are handled across the frontend application. The accelerator provides a scalable and extensible authentication foundation that supports secure login flows, protected routes, token/session handling, and permission-based UI rendering while remaining flexible enough to integrate with different backend authentication providers and enterprise identity systems.
+
+By centralizing authentication concerns, the accelerator ensures consistent security practices, improves developer productivity, and reduces the complexity of implementing authentication repeatedly across projects. The architecture is designed to support both current authentication requirements and future expansion such as OAuth providers, social login, multi-factor authentication, and advanced enterprise access control systems.
+
+### 🧩 Best Practices
+
+- Centralized authentication management  
+- Protected and role-based routing  
+- Secure token and session handling  
+- Permission-based UI rendering  
+- Authentication state persistence  
+- Environment-driven authentication configuration  
+- Graceful session expiration handling  
+- Extensible authentication provider support  
+
+```mermaid
+flowchart LR
+    User --> Login[Login UI]
+    Login --> AuthAPI[Authentication API]
+    AuthAPI --> Token[JWT / Session Token]
+    
+    Token --> AuthState[Auth State Management]
+    AuthState --> ProtectedRoutes[Protected Routes]
+    AuthState --> Permissions[Role & Permission Checks]
+
+    Permissions --> UI[Conditional UI Rendering]
+
+    AuthState --> Storage[Secure Token Storage]
+```
+
+---
+
+## 🛣️ Routing Architecture
+
+Routing Architecture defines how navigation, layouts, access control, and page transitions are structured across the frontend application. The accelerator provides a scalable and centralized routing system that supports public routes, protected routes, role-based access control, nested routing, layout-driven navigation, and dynamic route handling while maintaining a clean and maintainable frontend architecture.
+
+By standardizing routing behavior, the accelerator ensures consistent navigation patterns, improves user experience, simplifies permission management, and enables large applications to scale without introducing fragmented routing logic. The architecture is designed to support modern frontend requirements such as lazy loading, code splitting, and route-level performance optimization.
+
+### 🧩 Best Practices
+
+- Centralized route configuration  
+- Protected and role-based routes  
+- Layout-driven routing architecture  
+- Nested and modular route organization  
+- Lazy loading and route-based code splitting  
+- Graceful fallback and 404 handling  
+- Dynamic route support  
+- Scalable route grouping by feature/module  
+
+```mermaid
+flowchart TD
+    App --> Router[Routing Layer]
+
+    Router --> Public[Public Routes]
+    Router --> Protected[Protected Routes]
+
+    Protected --> Auth[Authentication Check]
+    Auth --> Roles[Role & Permission Validation]
+
+    Public --> Layout1[Public Layout]
+    Protected --> Layout2[Dashboard/Admin Layout]
+
+    Layout1 --> Pages1[Pages & Components]
+    Layout2 --> Pages2[Pages & Components]
+
+    Router --> Lazy[Lazy Loaded Modules]
+```
+
+---
+
+## 🗂️ State Management Strategy
+
+State Management Strategy defines how application data, UI state, authentication state, and server-side data are managed across the frontend application. The accelerator provides a scalable and flexible state management approach that separates local UI state, global application state, and API/server state to ensure predictable behavior, maintainability, and performance as the application grows.
+
+Instead of enforcing a single state management library for all scenarios, the architecture promotes choosing the right approach based on actual application complexity and business requirements. This strategy enables teams to avoid unnecessary complexity during early stages while still supporting enterprise-scale state management patterns when needed.
+
+### 🧩 Best Practices
+
+- Separation of local, global, and server state  
+- Minimal and scalable state architecture  
+- Centralized authentication and theme state  
+- API caching and query management  
+- Predictable state updates and synchronization  
+- Feature-based state organization  
+- Avoid unnecessary global state usage  
+- Optimized re-render and performance handling  
+
+```mermaid
+flowchart LR
+    UI[UI Components] --> Local[Local Component State]
+
+    UI --> Global[Global App State]
+    UI --> Server[Server/API State]
+
+    Global --> Auth[Authentication State]
+    Global --> Theme[Theme State]
+    Global --> Preferences[User Preferences]
+
+    Server --> API[REST / GraphQL / WebSocket APIs]
+
+    API --> Cache[Query Cache]
+    Cache --> UI
+```
+
+---
+
+## 🎨 UI Component Architecture
+
+UI Component Architecture defines how reusable frontend components are designed, organized, and scaled across the application. The accelerator promotes a component-driven architecture where UI elements are built as modular, reusable, and composable units, enabling teams to maintain design consistency, accelerate development, and simplify long-term maintenance.
+
+By standardizing component structure, styling patterns, and interaction behavior, the accelerator reduces duplicated UI logic and ensures a predictable development experience across teams. The architecture is designed to support scalable design systems, responsive layouts, accessibility standards, and theme compatibility while allowing frontend applications to evolve without creating fragmented user interfaces.
+
+### 🧩 Best Practices
+
+- Reusable and composable components  
+- Feature-based component organization  
+- Separation of presentation and business logic  
+- Consistent design system usage  
+- Theme-aware component development  
+- Responsive and accessible UI patterns  
+- Minimal prop drilling and clean interfaces  
+- Shared component documentation and standards  
+
+```mermaid
+flowchart TD
+    DesignSystem[Design System]
+
+    DesignSystem --> Base[Base Components]
+    Base --> Forms[Forms & Inputs]
+    Base --> Layouts[Layouts]
+    Base --> Feedback[Modals / Toasts / Alerts]
+    Base --> Navigation[Navigation Components]
+
+    Forms --> Features[Feature Modules]
+    Layouts --> Features
+    Feedback --> Features
+    Navigation --> Features
+
+    Features --> Pages[Application Pages]
+```
+
+---
+
+## 🎨 Theme & Design System
+
+Theme & Design System defines the visual foundation of the frontend application by standardizing colors, typography, spacing, layouts, component styling, and interaction behavior across the entire system. The accelerator provides a scalable and centralized design system approach that ensures UI consistency, improves developer productivity, and enables applications to maintain a cohesive user experience as they grow.
+
+By establishing reusable design tokens, theme-aware components, and centralized styling patterns, the accelerator simplifies UI customization, supports light and dark mode implementations, and reduces inconsistencies across teams and projects. The architecture is designed to support responsive design, accessibility standards, and scalable enterprise-grade frontend systems.
+
+### 🧩 Best Practices
+
+- Centralized design tokens and theme configuration  
+- Reusable and theme-aware UI components  
+- Light and dark mode support  
+- Consistent typography, spacing, and color systems  
+- Responsive-first design principles  
+- Accessibility-focused UI standards  
+- Scalable styling architecture  
+- Shared UI and branding consistency across applications  
+
+```mermaid
+flowchart TD
+    Theme[Theme Configuration]
+
+    Theme --> Tokens[Design Tokens]
+    Tokens --> Colors[Colors]
+    Tokens --> Typography[Typography]
+    Tokens --> Spacing[Spacing]
+    Tokens --> Shadows[Shadows]
+
+    Tokens --> Components[Reusable Components]
+
+    Components --> Light[Light Theme]
+    Components --> Dark[Dark Theme]
+
+    Components --> Pages[Application Pages]
+```
+
+---
+
+## 📱 Responsive Architecture
+
+Responsive Architecture defines how the frontend application adapts seamlessly across different devices, screen sizes, and user interaction patterns. The accelerator provides a scalable responsive design foundation that ensures consistent user experience across mobile, tablet, laptop, and desktop environments without requiring duplicated UI implementations for each device type.
+
+By standardizing responsive layouts, adaptive components, breakpoint management, and device-aware behaviors, the accelerator enables teams to build flexible and maintainable interfaces that remain performant and visually consistent across platforms. The architecture is designed to support responsive navigation, dynamic layouts, configurable device support, and modern mobile-first frontend engineering practices.
+
+### 🧩 Best Practices
+
+- Mobile-first responsive design  
+- Centralized breakpoint management  
+- Adaptive layouts and navigation systems  
+- Responsive and reusable UI components  
+- Device-aware rendering strategies  
+- Optimized performance for different screen sizes  
+- Configurable responsive behavior flags  
+- Consistent cross-device user experience  
+
+```mermaid
+flowchart LR
+    User[User Device]
+
+    User --> Mobile[Mobile Layout]
+    User --> Tablet[Tablet Layout]
+    User --> Desktop[Desktop Layout]
+
+    Mobile --> Components[Responsive Components]
+    Tablet --> Components
+    Desktop --> Components
+
+    Components --> Layout[Adaptive Layout System]
+    Layout --> Pages[Application Pages]
+```
+
+---
+
+## ⚡ Caching Strategy
+
+Caching Strategy defines how frontend data, API responses, and application state are temporarily stored and reused to improve performance, reduce unnecessary network requests, and enhance user experience. The accelerator provides a scalable caching foundation that supports server-state caching, browser storage strategies, offline-friendly behavior, and intelligent data synchronization across the application.
+
+By standardizing caching mechanisms and cache lifecycle management, the accelerator enables faster page interactions, smoother user experiences, reduced backend load, and improved application responsiveness. The architecture is designed to support modern frontend performance practices such as query caching, cache invalidation, background refetching, and persistent client-side storage.
+
+### 🧩 Best Practices
+
+- Query and API response caching  
+- Intelligent cache invalidation strategies  
+- Local and session storage management  
+- Background data refetching  
+- Optimized API request deduplication  
+- Offline-friendly frontend behavior  
+- Controlled cache expiration policies  
+- Minimal unnecessary network requests  
+
+```mermaid
+flowchart LR
+    UI[UI Components] --> Query[Query / API Layer]
+
+    Query --> Cache[Client Cache]
+    Query --> API[Backend APIs]
+
+    API --> Cache
+    Cache --> Storage[Local / Session Storage]
+
+    Cache --> UI
+```
+
+---
+
