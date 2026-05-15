@@ -658,3 +658,348 @@ flowchart LR
 
 ---
 
+## 🔐 Security Architecture
+
+The accelerator embeds security as a foundational layer across the frontend application, ensuring that authentication, authorization, session handling, and client-side protections are integrated from the beginning rather than treated as optional add-ons. It establishes a consistent and scalable frontend security model that safeguards user interactions, API communication, route access, and sensitive application flows while maintaining a seamless user experience.
+
+By standardizing frontend security practices, the accelerator reduces the risk of common vulnerabilities such as unauthorized access, insecure token handling, XSS attacks, and inconsistent permission enforcement. This approach enables teams to build secure, enterprise-grade frontend applications while remaining flexible enough to support modern authentication providers and evolving security requirements.
+
+### 🧩 Best Practices
+
+- Secure authentication and session management  
+- Protected and role-based route access  
+- Permission-based UI rendering  
+- Secure token storage and handling  
+- Input sanitization and validation  
+- Environment-based security configuration  
+- Graceful session expiration handling  
+- Secure API communication practices  
+
+```mermaid
+flowchart LR
+    User --> Login[Authentication]
+
+    Login --> Token[JWT / Session Token]
+
+    Token --> Auth[Auth State Management]
+    Auth --> Routes[Protected Routes]
+    Auth --> Permissions[Permission Validation]
+
+    Permissions --> UI[Secure UI Rendering]
+
+    UI --> APIs[Secure API Requests]
+```
+
+---
+
+## 📊 Observability Architecture
+
+The accelerator integrates observability as a core frontend capability, ensuring that applications have built-in visibility into user interactions, runtime behavior, API failures, performance bottlenecks, and client-side errors. By standardizing frontend logging, monitoring, error tracking, and performance analytics, the accelerator enables teams to diagnose issues faster, improve application reliability, and continuously optimize user experience across environments.
+
+This proactive observability approach helps teams detect frontend issues early, reduce production debugging effort, improve performance monitoring, and maintain operational transparency as applications scale in complexity and user traffic.
+
+### 🧩 Best Practices
+
+- Centralized frontend logging  
+- Global error tracking and monitoring  
+- API request and failure monitoring  
+- User interaction and event tracking  
+- Performance monitoring and analytics  
+- Environment-aware logging strategies  
+- Real-time issue visibility and diagnostics  
+- Observability integration readiness  
+
+```mermaid
+flowchart LR
+    App --> Logs[Frontend Logging]
+    App --> Errors[Error Tracking]
+    App --> Metrics[Performance Metrics]
+    App --> Events[User Event Tracking]
+
+    Logs --> Dashboard[Monitoring Dashboard]
+    Errors --> Dashboard
+    Metrics --> Dashboard
+    Events --> Dashboard
+```
+
+---
+
+## 🧪 Testing Strategy
+
+The accelerator embeds a comprehensive frontend testing strategy as a core part of the development lifecycle, ensuring that reliability, usability, and quality are built into every application from the start. By standardizing frontend testing practices across components, user flows, APIs, and integrations, it enables teams to detect issues early, prevent regressions, and maintain confidence in every release while improving long-term maintainability.
+
+This approach reduces frontend production issues, improves user experience quality, and supports faster, safer deployments as applications evolve in complexity and scale.
+
+### 🧩 Best Practices
+
+- Unit Testing for components, hooks, and utilities  
+- Integration Testing for connected frontend flows  
+- End-to-End Testing for critical user journeys  
+- API and service mocking for isolated testing  
+- Reusable test utilities and fixtures  
+- Automated CI/CD test execution  
+- Coverage reporting and quality validation  
+- Consistent frontend testing standards  
+
+---
+
+## ☁️ Deployment Architecture
+
+The accelerator defines a standardized frontend deployment architecture that streamlines the journey from source code to production-ready frontend applications. By embedding deployment automation, environment management, build optimization, and containerization into the foundation, it enables teams to deliver frontend changes consistently, reliably, and efficiently across multiple environments and cloud platforms.
+
+This approach minimizes deployment risks, improves operational consistency, supports scalable frontend delivery pipelines, and ensures that applications remain optimized for performance, reliability, and maintainability as they evolve.
+
+### 🧩 Best Practices
+
+- Automated CI/CD pipelines  
+- Environment-based frontend configurations  
+- Optimized production builds  
+- Dockerized frontend deployments  
+- Cloud-agnostic deployment strategy  
+- Static asset optimization and caching  
+- Automated testing before deployment  
+- Consistent build and release workflows  
+
+```mermaid
+flowchart LR
+    Dev[Developer] --> CI[CI/CD Pipeline]
+
+    CI --> Test[Frontend Tests]
+    Test --> Build[Production Build]
+
+    Build --> Docker[Docker Image]
+    Docker --> Registry[Artifact Registry]
+
+    Registry --> Cloud[AWS / Azure / GCP]
+
+    Cloud --> CDN[CDN / Static Hosting]
+    CDN --> Users[End Users]
+```
+
+---
+
+## 📂 Project Structure
+
+The accelerator follows a clean, scalable, and modular frontend project structure designed to separate concerns and support long-term maintainability across enterprise-grade React applications. The structure standardizes how configurations, shared utilities, reusable UI components, state management, services, feature modules, themes, and tests are organized, ensuring consistency across teams and projects while keeping the root level minimal and easy to navigate.
+
+Documentation and reusable templates are maintained independently to standardize frontend engineering practices, while the src directory is organized into clearly defined layers such as configuration, shared components, core infrastructure, services, feature modules, state management, themes, and testing utilities. This modular structure enables frontend applications to scale predictably while supporting modern frontend capabilities such as REST, GraphQL, WebSockets, responsive design systems, authentication flows, and cloud-ready deployments within a consistent architectural framework.
+
+```plaintext
+.husky/                        # Git hooks 
+│   ├── pre-commit             # Pre-commit hook for lint-staged checks 
+│   └── pre-push               # Pre-push hook for lint-staged checks 
+.github/                       # GitHub-related configuration 
+│   └── workflows/             # GitHub Actions workflows 
+│       └── ci-cd.yml          # CI/CD pipeline for build, test, report, deploy 
+jenkins/                       # Jenkins-related configuration 
+│   └── Jenkinsfile            # Jenkins CI/CD pipeline file
+allure-results/                # Generated Allure raw test results 
+allure-report/                 # Generated Allure HTML report  
+docs/
+│   ├── config/                # Configuration documentation
+│   ├── common/                # Shared modules documentation
+│   ├── core/                  # Core infrastructure documentation
+│   ├── services/              # API & integration documentation
+│   ├── modules/               # Feature module documentation
+│   ├── theme/                 # Theme & design system documentation
+│   └── test/                  # Testing documentation
+templates/
+│   ├── env/
+│   │   ├── env.template       # Empty env file with only keys
+│   │   └── env.local          # Local development env values
+│   ├── api-spec/
+│   │   └── markdown.md        # API integration template
+│   └── component/
+│       └── component.tsx      # Reusable component template
+src/
+├── config/
+│   ├── env.ts                 # Environment configuration wrapper
+│   ├── app-config.ts          # Application configuration
+│   ├── api-config.ts          # API configuration
+│   └── auth-config.ts         # Authentication configuration
+├── constants/
+│   ├── routes.ts              # Application routes
+│   ├── roles.ts               # Roles & permissions
+│   ├── theme.ts               # Theme constants
+│   └── error-codes.ts         # Application error codes
+├── common/
+│   ├── utils/                 # Shared utility functions
+│   ├── hooks/                 # Reusable custom hooks
+│   ├── types/                 # Shared TypeScript types
+│   ├── interfaces/            # Shared interfaces
+│   ├── validators/            # Shared validators
+│   └── exceptions/            # Shared frontend exceptions
+├── core/
+│   ├── auth/                  # Authentication management
+│   ├── routing/               # Routing configuration
+│   ├── state/                 # Global state configuration
+│   ├── logger/                # Frontend logging
+│   ├── monitoring/            # Monitoring & observability
+│   ├── caching/               # Caching layer
+│   ├── guards/                # Route guards
+│   ├── interceptors/          # API interceptors
+│   └── websocket/             # WebSocket configuration
+├── services/
+│   ├── rest/                  # REST API services
+│   ├── graphql/               # GraphQL clients & queries
+│   └── websocket/             # WebSocket clients
+├── theme/
+│   ├── tokens/                # Design tokens
+│   ├── components/            # Shared themed UI components
+│   ├── layouts/               # Layout systems
+│   └── styles/                # Global styles
+├── modules/
+│   ├── auth/                  # Authentication module
+│   │   ├── pages/
+│   │   ├── components/
+│   │   ├── hooks/
+│   │   ├── services/
+│   │   └── store/
+│   │
+│   ├── dashboard/             # Dashboard module
+│   │   ├── pages/
+│   │   ├── components/
+│   │   ├── hooks/
+│   │   ├── services/
+│   │   └── store/
+│   │
+│   └── users/                 # Users module
+│       ├── pages/
+│       ├── components/
+│       ├── hooks/
+│       ├── services/
+│       └── store/
+├── assets/
+│   ├── images/                # Images & icons
+│   ├── fonts/                 # Fonts
+│   └── svg/                   # SVG assets
+├── test/
+│   ├── unit/                  # Unit tests
+│   ├── integration/           # Integration tests
+│   ├── e2e/                   # End-to-end tests
+│   └── fixtures/              # Test fixtures & mock data
+├── .dockerignore              # Docker ignore file
+├── .env                       # Environment variables
+├── .gitignore                 # Git ignore file
+├── .prettierignore            # Prettier ignore file
+├── .prettierrc.mjs            # Prettier configuration
+├── App.tsx                    # Root application component
+├── main.tsx                   # Application entry point
+├── vite.config.ts             # Vite configuration
+├── eslint.config.mjs          # ESLint configuration
+├── package-lock.json          # Lockfile for dependencies
+├── package.json               # Package metadata
+├── tsconfig.json              # TypeScript configuration
+├── Dockerfile                 # Dockerfile for containerization
+├── docker-compose.yml         # Docker-compose configuration
+└── README.md                  # Project description
+```
+
+--- 
+
+## 🔄 Versioning
+
+Versioning is standardized across the accelerator using Semantic Versioning (SemVer) to ensure predictable and maintainable frontend application releases. In addition to application-level versioning, the accelerator promotes structured version management for UI components, design systems, frontend assets, and API integration contracts to maintain compatibility and reduce breaking changes across environments and teams.
+
+By establishing consistent versioning practices, the accelerator enables safer deployments, smoother collaboration between frontend and backend systems, controlled UI evolution, and improved long-term maintainability as applications scale.
+
+### 🧩 Best Practices
+
+- Semantic Versioning (SemVer)  
+- UI Component Versioning  
+- Design System Versioning  
+- API Contract Compatibility  
+- Environment-Based Release Management  
+- Frontend Asset Versioning  
+- Backward-Compatible UI Evolution  
+
+---
+
+## 🚀 Future Enhancements
+
+This section outlines planned capabilities to further strengthen the accelerator’s scalability, flexibility, user experience, and developer productivity. As the platform evolves, these enhancements will enable deeper enterprise integrations, stronger authentication ecosystems, improved frontend performance, advanced automation, and faster application scaffolding—ensuring the accelerator continues to meet the demands of modern, enterprise-grade frontend systems.
+
+- 🔐 Enterprise SSO Support (Google, Microsoft Outlook, Okta, Gluu, AWS Amplify, Auth0)
+- 🛠️ Frontend CLI Generator for rapid project scaffolding
+- 🎨 Advanced Design System & Component Registry
+- 🌍 Internationalization (i18n) & Localization Support
+- 📱 Progressive Web App (PWA) Support
+- 📊 Advanced Frontend Analytics & User Tracking
+- ⚡ Micro-Frontend Architecture Support
+- 🧠 AI-Assisted UI & Form Generation
+- 🧪 Visual Regression Testing Integration
+- 🔔 Real-Time Notification Framework
+- 📦 Shared Component Package Publishing
+- ♿ Advanced Accessibility Compliance Tooling
+- 🚀 Edge Deployment & CDN Optimization Support
+- 📈 Frontend Performance Benchmarking Toolkit
+
+--- 
+
+## 👥 Who Should Use Thynqit Accelerator
+
+- 🚀 Startups building scalable frontend applications  
+- 🏢 Enterprises modernizing frontend architecture and user experience  
+- 👨‍💻 Engineering teams seeking consistent frontend standards  
+- 🎨 Product teams building reusable design systems  
+- 📊 SaaS platforms requiring scalable dashboards and portals  
+- ⚡ Teams accelerating frontend delivery with reusable foundations  
+- 🌍 Organizations building responsive, cloud-ready web applications  
+
+---
+
+## 🧠 Engineering Philosophy
+
+At Thynqit, we believe:
+
+- 🎨 Great user experience starts with strong frontend architecture  
+- 🧩 Reusable components accelerate scalable product development  
+- ⚡ Performance and responsiveness are not optional  
+- 📱 Applications should work seamlessly across all devices  
+- 🔐 Security and accessibility must be built into the foundation  
+- 📊 Observability improves frontend reliability and user trust  
+- 📈 Frontend systems should scale without sacrificing maintainability  
+- 🚀 Consistency in UI and engineering practices drives velocity  
+
+---
+
+## 📩 Work With Us
+
+Interested in leveraging this accelerator or building scalable frontend applications and modern digital experiences?
+
+Thynqit builds scalable, high-performance, AI-powered, and cloud-native digital platforms with a strong focus on frontend engineering excellence, user experience, and enterprise-grade architecture.
+
+📧 connect@thynqit.com  
+🌐 https://thynqit.com
+
+---
+
+## 🤝 Contributing
+
+This repository is part of Thynqit’s internal engineering accelerator and is shared publicly for reference and knowledge sharing purposes only.
+
+We do not accept external contributions, pull requests, or forks for this project.
+
+However, we welcome:
+
+- 💬 Discussions around architecture and engineering practices
+- 🤝 Collaboration opportunities
+- 📩 Partnership or licensing inquiries
+
+If you’re interested in working with Thynqit or learning more about our engineering approach, feel free to reach out.
+
+---
+
+## 📜 License
+
+This project is licensed under a **Proprietary License (All Rights Reserved)**.
+
+You may:
+
+- View and reference the material
+
+You may NOT:
+
+- Copy, modify, distribute, or use in production without explicit permission
+
+---
