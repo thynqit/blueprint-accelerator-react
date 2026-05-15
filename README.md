@@ -115,8 +115,6 @@ Using this accelerator delivers measurable outcomes:
 - [Theme & Design System](#-theme--design-system)
 - [Responsive Architecture](#-responsive-architecture)
 - [Caching Strategy](#-caching-strategy)
-
-
 - [Security Architecture](#-security-architecture)
 - [Observability Architecture](#-observability-architecture)
 - [Testing Strategy](#-testing-strategy)
@@ -124,7 +122,7 @@ Using this accelerator delivers measurable outcomes:
 - [Project Structure](#-project-structure)
 - [Versioning](#-versioning)
 - [Future Enhancements](#-future-enhancements)
-- [Who Should Use This](#-who-should-use-this)
+- [Who Should Use Thynqit Accelerator](#-who-should-use-thynqit-accelerator)
 - [Engineering Philosophy](#-engineering-philosophy)
 - [Work With Us](#-work-with-us)
 - [Contributing](#-contributing)
@@ -143,7 +141,7 @@ Using this accelerator delivers measurable outcomes:
 
 ---
 
-## ⚖️ Accelerator vs Traditional Setup
+## 🆚 Accelerator vs Traditional Setup
 
 | Traditional Setup            | Thynqit Accelerator                | Time / Effort Saved              |
 | ---------------------------- | ---------------------------------- | -------------------------------- |
@@ -159,7 +157,7 @@ Using this accelerator delivers measurable outcomes:
 
 ---
 
-## 🏗️ How Thynqit Uses This
+## 🏢 How Thynqit Uses This
 
 This accelerator is used internally across Thynqit frontend projects to:
 
@@ -190,7 +188,7 @@ It represents the foundational frontend architectural guidelines that shape how 
 
 ---
 
-## 🏗️ High-Level Architecture
+## 🏢 High-Level Architecture
 
 High-Level Architecture defines the overall structural blueprint of the frontend application by organizing it into clearly separated layers such as UI, state management, business logic, and API integration. This layered approach establishes clear boundaries of responsibility, ensuring that components, services, and application state can evolve independently without introducing unnecessary coupling or UI inconsistencies. By enforcing this structure, the accelerator enables scalability, maintainability, reusability, and flexibility, allowing teams to rapidly build and extend modern frontend applications while maintaining consistent engineering standards and user experience.
 
@@ -349,7 +347,7 @@ Cross-Cutting Concerns represent shared frontend capabilities that span across a
 
 ---
 
-## ⚙️ Functional Capabilities
+## 🧩 Functional Capabilities
 
 The accelerator provides a comprehensive set of frontend engineering capabilities that establish a scalable, maintainable, and production-ready foundation for modern React applications. By standardizing critical frontend concerns such as UI architecture, state management, API integration, responsiveness, testing, deployment, and observability, it enables teams to accelerate development while maintaining high engineering quality, consistent user experience, and long-term maintainability.
 
@@ -375,7 +373,7 @@ The accelerator provides a comprehensive set of frontend engineering capabilitie
 
 ---
 
-## 🛠️ Technology Stack Mapping
+## 🔧 Technology Stack Mapping
 
 The accelerator is built using a carefully selected set of industry-proven frontend tools and frameworks to ensure scalability, maintainability, performance, and developer productivity across all layers of the application.
 
@@ -443,7 +441,7 @@ flowchart LR
 
 ---
 
-## 🛣️ Routing Architecture
+## 🧭 Routing Architecture
 
 Routing Architecture defines how navigation, layouts, access control, and page transitions are structured across the frontend application. The accelerator provides a scalable and centralized routing system that supports public routes, protected routes, role-based access control, nested routing, layout-driven navigation, and dynamic route handling while maintaining a clean and maintainable frontend architecture.
 
@@ -481,7 +479,7 @@ flowchart TD
 
 ---
 
-## 🗂️ State Management Strategy
+## 📦 State Management Strategy
 
 State Management Strategy defines how application data, UI state, authentication state, and server-side data are managed across the frontend application. The accelerator provides a scalable and flexible state management approach that separates local UI state, global application state, and API/server state to ensure predictable behavior, maintainability, and performance as the application grows.
 
@@ -743,7 +741,7 @@ This approach reduces frontend production issues, improves user experience quali
 
 ---
 
-## ☁️ Deployment Architecture
+## 🚢 Deployment Architecture
 
 The accelerator defines a standardized frontend deployment architecture that streamlines the journey from source code to production-ready frontend applications. By embedding deployment automation, environment management, build optimization, and containerization into the foundation, it enables teams to deliver frontend changes consistently, reliably, and efficiently across multiple environments and cloud platforms.
 
